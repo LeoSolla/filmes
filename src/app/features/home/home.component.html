@@ -1,0 +1,85 @@
+<nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+      <h1>Cadastro de Filmes</h1>
+      <div class="d-flex">
+        <button (click)="clickAddMovie()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Adicionar filme</button>
+      </div>
+    </div>
+  </nav>
+  
+  <table class="table text-center align-middle table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">ID do filme</th>
+        <th scope="col">Título do filme</th>
+        <th scope="col">Diretor</th>
+        <th scope="col">Gênero</th>
+        <th scope="col">Ano</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Pôster</th>
+        <th scope="col">Detalhes</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let data of data">
+          <td>{{ data.id }}</td>
+          <td>{{ data.titulo }}</td>
+          <td>{{ data.diretor }}</td>
+          <td>{{ data.genero }}</td>
+          <td>{{ data.ano }}</td>
+          <td width="215">{{ data.descricao }}</td>
+          <td>
+              <img width="215" height="286" src="{{ data.poster }}" alt="" srcset="">
+          </td>
+          <td>
+            <button (click)="editMovie(data)" class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
+            <button (click)="deleteMovie(data)" class="btn btn-danger mx-3">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Informações do filme</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="mb-3">
+              <label class="form-label">Título do filme</label>
+              <input type="text" formControlName="titulo" class="form-control">              
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Diretor</label>
+              <input type="text" formControlName="diretor" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Gênero</label>
+              <input type="text" formControlName="genero" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Ano</label>
+              <input type="text" formControlName="ano" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Descrição</label>
+              <textarea type="text" formControlName="descricao" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">URL do Pôster</label>
+              <input type="text" formControlName="poster" class="form-control">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancelar" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" *ngIf="btnAdd" (click)="postMovieDetails()" class="btn btn-primary">Adicionar</button>
+          <button type="button" *ngIf="btnUpdate" (click)="updateMovieDetails()" class="btn btn-info">Atualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>

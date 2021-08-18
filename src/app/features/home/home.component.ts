@@ -45,8 +45,8 @@ export class HomeComponent implements OnInit {
     });
 
     this.formValue.reset();
-    //this.btnAdd = true;
-    //this.btnUpdate = false;
+    this.btnAdd = true;
+    this.btnUpdate = false;
   }
 
   getAllMovies() {

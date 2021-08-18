@@ -3,13 +3,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding-top: 8px;
+    padding-bottom: 8px;
     background-color: #005034;
 
     .container-header {
         display: flex;
-        flex-wrap: inherit;
         align-items: center;
         justify-content: space-between;
         background-color: #005034;
@@ -65,6 +64,33 @@ table {
 
     &:hover {
         background-color: #3e3efb;
+    }
+}
+.btnEdit {
+    background-color: #0000ff;
+
+    &:hover {
+        background-color: #3e3efb;
+    }
+}
+.btnDelete {
+    background-color: #c22033;
+    &:hover {
+        background-color: #fd2c44;
+    }
+}
+.btnUpdate {
+    background-color: orangered;
+
+    &:hover {
+        background-color: #cc3a04;
+    }
+}
+.btnClose {
+    background-color: #808080;
+
+    &:hover {
+        background-color: #676666;
     }
 }
 .btnDelete {

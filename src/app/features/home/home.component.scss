@@ -3,13 +3,21 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+<<<<<<< HEAD
     padding-top: .5rem;
     padding-bottom: .5rem;
+=======
+    padding-top: 8px;
+    padding-bottom: 8px;
+>>>>>>> 8adcd394a0537ccd628ddda3deef1021594a3f60
     background-color: #005034;
 
     .container-header {
         display: flex;
+<<<<<<< HEAD
         flex-wrap: inherit;
+=======
+>>>>>>> 8adcd394a0537ccd628ddda3deef1021594a3f60
         align-items: center;
         justify-content: space-between;
         background-color: #005034;
@@ -42,6 +50,10 @@ table {
         background-color: #ddd;
       }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8adcd394a0537ccd628ddda3deef1021594a3f60
 .btn {
     padding: 4px 16px;
     color: #fff;
@@ -58,6 +70,7 @@ table {
 
     &:hover {
         background-color: #4ab77e;
+<<<<<<< HEAD
     }
 }
 .btnEdit {
@@ -65,6 +78,35 @@ table {
 
     &:hover {
         background-color: #3e3efb;
+=======
+    }
+}
+.btnEdit {
+    background-color: #0000ff;
+
+    &:hover {
+        background-color: #3e3efb;
+    }
+}
+.btnDelete {
+    background-color: #c22033;
+    &:hover {
+        background-color: #fd2c44;
+    }
+}
+.btnUpdate {
+    background-color: orangered;
+
+    &:hover {
+        background-color: #cc3a04;
+    }
+}
+.btnClose {
+    background-color: #808080;
+
+    &:hover {
+        background-color: #676666;
+>>>>>>> 8adcd394a0537ccd628ddda3deef1021594a3f60
     }
 }
 .btnDelete {

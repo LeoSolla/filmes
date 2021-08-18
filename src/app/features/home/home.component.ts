@@ -1,7 +1,9 @@
+import { MovieModalComponent } from './../../shared/components/movie-modal/movie-modal.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/shared/api.service';
 import { MovieModel } from './home.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,8 @@ export class HomeComponent implements OnInit {
   btnUpdate !: boolean;
 
   constructor(private formbuilder: FormBuilder,
-              private api: ApiService) { }
+              private api: ApiService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
       this.formValue = this.formbuilder.group({
@@ -30,37 +33,29 @@ export class HomeComponent implements OnInit {
     })
     this.getAllMovies();
   }
-  clickAddMovie(){
+  clickAddMovie(data: any){    
+     const dialogRef = this.dialog.open(MovieModalComponent, {
+      panelClass: "custom-dialog-container",
+      width: "900px",
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getAllMovies();
+    });
+
     this.formValue.reset();
     this.btnAdd = true;
     this.btnUpdate = false;
   }
-  postMovieDetails() {
-    this.movieModel.titulo = this.formValue.value.titulo;
-    this.movieModel.diretor = this.formValue.value.diretor;
-    this.movieModel.genero = this.formValue.value.genero;
-    this.movieModel.ano = this.formValue.value.ano;
-    this.movieModel.descricao = this.formValue.value.descricao;
-    this.movieModel.poster = this.formValue.value.poster;
-    this.api.postMovie(this.movieModel)
-    .subscribe(res=>{
-      console.log(res);
-      alert("Filme cadastrado com sucesso!");
-      let ref = document.getElementById('cancelar');
-      ref?.click();
-      this.formValue.reset();
-      this.getAllMovies();
-    },
-    err=>{
-      alert("Ops... alguma coisa deu errada");
-    })
-  }
+
   getAllMovies() {
     this.api.getMovies()
     .subscribe(res=>{
       this.data = res;
     })
   }
+
   deleteMovie(data: any){
     this.api.deleteMovie(data.id)
     .subscribe(res=>{
@@ -68,7 +63,18 @@ export class HomeComponent implements OnInit {
       this.getAllMovies();
     })
   }
+
   editMovie(data: any){
+    const dialogRef = this.dialog.open(MovieModalComponent, {
+      panelClass: "custom-dialog-container",
+      width: "900px",
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.getAllMovies();
+    });
+
     this.btnAdd = false;
     this.btnUpdate = true;
     this.movieModel.id = data.id;
@@ -79,21 +85,5 @@ export class HomeComponent implements OnInit {
     this.formValue.controls['descricao'].setValue(data.descricao);
     this.formValue.controls['poster'].setValue(data.poster);
   }
-  updateMovieDetails() {
-    this.movieModel.titulo = this.formValue.value.titulo;
-    this.movieModel.diretor = this.formValue.value.diretor;
-    this.movieModel.genero = this.formValue.value.genero;
-    this.movieModel.ano = this.formValue.value.ano;
-    this.movieModel.descricao = this.formValue.value.descricao;
-    this.movieModel.poster = this.formValue.value.poster;
 
-    this.api.updateMovie(this.movieModel, this.movieModel.id)
-    .subscribe(res=>{
-      alert("Filme atualizado com sucesso!");
-      let ref = document.getElementById('cancelar');
-      ref?.click();
-      this.formValue.reset();
-      this.getAllMovies();
-    })    
-  }
 }

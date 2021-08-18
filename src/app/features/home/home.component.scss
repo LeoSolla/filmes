@@ -3,12 +3,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
     background-color: #005034;
 
     .container-header {
         display: flex;
+        flex-wrap: inherit;
         align-items: center;
         justify-content: space-between;
         background-color: #005034;
@@ -41,7 +42,6 @@ table {
         background-color: #ddd;
       }
 }
-
 .btn {
     padding: 4px 16px;
     color: #fff;
@@ -71,19 +71,5 @@ table {
     background-color: #c22033;
     &:hover {
         background-color: #fd2c44;
-    }
-}
-.btnUpdate {
-    background-color: orangered;
-
-    &:hover {
-        background-color: #cc3a04;
-    }
-}
-.btnClose {
-    background-color: #808080;
-
-    &:hover {
-        background-color: #676666;
     }
 }

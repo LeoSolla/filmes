@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div class="movie-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Informações do filme</h5>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="mb-3">
+              <label class="form-label">Título do filme</label>
+              <input type="text" formControlName="titulo" class="form-control">              
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Diretor</label>
+              <input type="text" formControlName="diretor" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Gênero</label>
+              <input type="text" formControlName="genero" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Ano</label>
+              <input type="text" formControlName="ano" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Descrição</label>
+              <textarea type="text" formControlName="descricao" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">URL do Pôster</label>
+              <input type="text" formControlName="poster" class="form-control">
+            </div>
+          </form>
+        </div>
+        <div class="movie-modal-footer">
+          <button type="button" id="cancelar" (click)="goBackHandler()" class="btn btnClose" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" *ngIf="btnAdd"  (click)="postMovieDetails()" class="btn btnAdd">Adicionar</button>
+          <button type="button" *ngIf="btnUpdate" (click)="updateMovieDetails()" class="btn btnUpdate">Atualizar</button>
+        </div>
+      </div>
+    </div>
+  </div>

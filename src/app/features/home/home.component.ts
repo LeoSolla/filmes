@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
      const dialogRef = this.dialog.open(MovieModalComponent, {
       panelClass: "custom-dialog-container",
       width: "900px",
-      data: data
+      data: {data: data, btnAdd: true, btnUpdate: false}
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -45,8 +45,6 @@ export class HomeComponent implements OnInit {
     });
 
     this.formValue.reset();
-    this.btnAdd = true;
-    this.btnUpdate = false;
   }
 
   getAllMovies() {
@@ -68,15 +66,13 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(MovieModalComponent, {
       panelClass: "custom-dialog-container",
       width: "900px",
-      data: data
+      data: {data: data, btnAdd: false, btnUpdate: true}
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       this.getAllMovies();
     });
-
-    this.btnAdd = false;
-    this.btnUpdate = true;
+    
     this.movieModel.id = data.id;
     this.formValue.controls['titulo'].setValue(data.titulo);
     this.formValue.controls['diretor'].setValue(data.diretor);

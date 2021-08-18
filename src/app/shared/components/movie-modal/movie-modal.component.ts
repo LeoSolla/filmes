@@ -33,15 +33,16 @@ export class MovieModalComponent implements OnInit {
       descricao: [''],
       poster: ['']
     })
-    this.btnAdd = true;
-    this.btnUpdate = true;
-    this.movieModel.id = data.id;
-    this.formValue.controls['titulo'].setValue(data.titulo);
-    this.formValue.controls['diretor'].setValue(data.diretor);
-    this.formValue.controls['genero'].setValue(data.genero);
-    this.formValue.controls['ano'].setValue(data.ano);
-    this.formValue.controls['descricao'].setValue(data.descricao);
-    this.formValue.controls['poster'].setValue(data.poster);  
+    
+    this.btnAdd = data.btnAdd;
+    this.btnUpdate = data.btnUpdate;
+    this.movieModel.id = data.data.id;
+    this.formValue.controls['titulo'].setValue(data.data.titulo);
+    this.formValue.controls['diretor'].setValue(data.data.diretor);
+    this.formValue.controls['genero'].setValue(data.data.genero);
+    this.formValue.controls['ano'].setValue(data.data.ano);
+    this.formValue.controls['descricao'].setValue(data.data.descricao);
+    this.formValue.controls['poster'].setValue(data.data.poster);  
   }
 
   ngOnInit(): void {}
